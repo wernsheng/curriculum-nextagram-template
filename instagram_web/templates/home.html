@@ -6,4 +6,7 @@
 {% endblock %}
 {% block content %}
 <h1>Homepage</h1>
+<a href="{{ url_for('users.new') }}" class="btn">New User</a>
+<a href="{{ url_for('sessions.new') }}" class="btn">Sign In</a>
+
 {% endblock %}

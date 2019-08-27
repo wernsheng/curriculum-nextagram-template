@@ -1,6 +1,6 @@
 import os
 import config
-from flask import Flask
+from flask import Flask, render_template, request
 from models.base_model import db
 
 web_dir = os.path.join(os.path.dirname(
@@ -25,3 +25,4 @@ def _db_close(exc):
         print(db)
         print(db.close())
     return exc
+
