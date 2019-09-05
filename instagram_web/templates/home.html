@@ -5,8 +5,23 @@
 {% block header %}
 {% endblock %}
 {% block content %}
-<h1>Homepage</h1>
-<a href="{{ url_for('users.new') }}" class="btn">New User</a>
-<a href="{{ url_for('sessions.new') }}" class="btn">Sign In</a>
+
+{% if current_user.is_authenticated %}
+<div class=signup_form>
+  <div class=profile_pic_class>
+    <img src="{{current_user.profile_image_url}}" height="200" width="200"/>
+  </div>
+  <p> Hello {{ current_user.name }}. </p>
+    <p> Your username is {{ current_user.username }}. </p>
+    <p> Your email is {{ current_user.email }}. </p>
+</div>
+{% endif %}
+
+{% if not current_user.is_authenticated %}
+<div class=signup_form>
+    <p> Welcome to NEXTAGRAM! </p>
+    <p> Please sign in or sign up. </p>
+</div>
+{% endif %}
 
 {% endblock %}

@@ -1,0 +1,30 @@
+{% extends "_layout.html" %}
+{% block content %}
+<div class=edit_form>
+    <div style= font-weight:bold>
+        <p> Profile page </p>  
+    </div>
+
+    <div> 
+        <img src="{{user.profile_image_url}}" height="200" width="200"/>
+    </div>
+
+    <div>
+        <p>{{ user.name }} is currently logged in. </p>
+        <p> Your user ID is {{ user.id }}. </p>
+        <p> Your username is {{ user.username }}. </p>
+        <p> Your email is {{ user.email }}. </p>
+    </div>
+    
+    {% for image in user.images %}
+
+    <div>
+      <img src="{{image.user_image_url}}"/>
+    </div>
+    <form action="/" method="POST" class="form-inline my-2 my-lg-0">
+        <button type="submit">Donate</button>
+    </form>
+
+    {% endfor %}
+
+{% endblock %}

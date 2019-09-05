@@ -17,6 +17,63 @@
     {% block header %}{% endblock %}
     <title>{% block title %}{% endblock %}NEXTAGRAM</title>
   </head>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    {% if not current_user.is_authenticated %}
+    <a class="navbar-brand" href="/">Nextagram</a>
+    {% endif %}
+    {% if current_user.is_authenticated %}
+    <a class="navbar-brand" href="{{url_for('users.show', id = current_user.id)}}">Nextagram</a>
+    {% endif %}
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        {% if not current_user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('sessions.new') }}">Sign In</a>
+        </li>        
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('users.new') }}">New User</a>
+        </li>
+        {% endif %}
+        {% if current_user.is_authenticated %}
+        <form action="{{url_for('sessions.destroy')}}" method="POST" class="form-inline my-2 my-lg-0">
+          <button type="submit">Sign Out</button>
+        </form>
+        <li class="nav-item">
+            <a class="nav-link" href="{{url_for('users.edit', id = current_user.id)}}">Update Details</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{url_for('users.edit_photo', id = current_user.id)}}"> Profile Photo</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{url_for('uploadimage.new', id = current_user.id)}}"> Upload Photo</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{url_for('users.show' , id = current_user.id)}}"> Profile</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{url_for('users.show_profiles')}}"> Other Profiles</a>
+        </li>
+        {% endif %}
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </div>
+  </nav>
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <ul class=flashes>
+      {% for message in messages %}
+        <li>{{ message }}</li>
+      {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
   <body>
     {% block content %}
     {% endblock %}

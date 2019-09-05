@@ -1,0 +1,24 @@
+{% extends "_layout.html" %}
+{% block content %}
+<div class=edit_form>
+    <div style= font-weight:bold>
+        <p> Upload user photo </p>  
+    </div>
+
+    <div>
+        <p>{{ current_user.name }} is currently logged in. </p>
+        <p> Your user ID is {{ current_user.id }}. </p>
+        <p> Your username is {{ current_user.username }}. </p>
+        <p> Your email is {{ current_user.email }}. </p>
+    </div>
+
+    <div>
+        <form action="{{ url_for('uploadimage.update', id = current_user.id) }}" method = "POST" enctype="multipart/form-data">
+            <div class="form-group">
+              <label for="user_photo_form">User photo</label>
+              <input type='file' name='user_picture' class="form-control" />
+            </div>         
+            <button type="submit" class="btn btn-primary"> Upload </button>
+          </form>
+    </div>
+{% endblock %}

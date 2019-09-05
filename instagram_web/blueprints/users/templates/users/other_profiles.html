@@ -1,0 +1,26 @@
+{% extends "_layout.html" %}
+{% block content %}
+
+<div class=edit_form>
+    <div style= font-weight:bold>
+        <p> List of Profiles </p>  
+    </div>
+
+    
+{% for user in users %}
+<div>
+    <a href="{{url_for('users.show', id = user.id)}}">Username: {{ user.name }}</a>
+</div>
+<div> 
+    <img src="{{user.profile_image_url}}" height="200" width="300"/>
+</div>
+User Images: 
+    {% for image in user.images %}
+    <div>
+        <img src="{{image.user_image_url}}"/>
+    </div>
+    {% endfor %}
+
+{% endfor %}
+
+{% endblock %}

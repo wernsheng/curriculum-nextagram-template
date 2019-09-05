@@ -1,0 +1,40 @@
+.signup_form {
+    background: lightgrey;
+    /* width: 600px; */
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    padding: 10px;
+    align-items: center;
+}
+
+.login_form {
+    background: lightgrey;
+    /* width: 600px; */
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    padding: 10px;
+    align-items: center;
+}
+
+
+.edit_form {
+    background: lightgrey;
+    /* width: 600px; */
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    padding: 10px;
+    align-items: center;
+}
+
+.error_container {
+    background: white;
+    /* width: 600px; */
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    padding: 10px;
+    align-items: center;
+}
